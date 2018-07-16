@@ -15,6 +15,8 @@ var zkStatus = 'none',// 'initialized', 'deinitialized'
     mainMonitor,
     client;// zookeeper client
 
+var console;
+
 function Monitor() {
   this._saved = {};
   events.EventEmitter.call(this);
