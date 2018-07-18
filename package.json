@@ -1,7 +1,7 @@
 {
   "name": "zkhelper",
   "description": "zkHelper",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": {
     "name": "Thanh Phu",
     "email": "thanh.phu@daliworks.net"
@@ -10,9 +10,9 @@
     "node": ">=0.8.x"
   },
   "dependencies": {
-    "async": "0.2.10",
-    "lodash": "2.4.1",
-    "node-zookeeper-client": "0.2.0"
+    "async": "2.6.1",
+    "lodash": "4.17.10",
+    "node-zookeeper-client": "0.2.2"
   },
   "keywords": [
     "zookeeper"
@@ -20,7 +20,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/daliworks/zkHelper/blob/msater/LICENSE"
+      "url": "https://github.com/thanhphu/zkHelper/blob/msater/LICENSE"
     }
   ]
 }
