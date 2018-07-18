@@ -262,7 +262,7 @@ function getMaster(cluster) {
     cluster = mainCluster;
   }
   if (cluster.master &&
-    _.contains(cluster.nodes, cluster.master)) {
+    _.includes(cluster.nodes, cluster.master)) {
     return cluster.master;
   }
   return;
@@ -394,7 +394,7 @@ function init(opt, cb) {
           return done();
         }
         mainMonitor.on('children', function (path, newVal/*, diff*/) {
-          if (BASE_PATH && _.contains(path, BASE_PATH)) {
+          if (BASE_PATH && _.includes(path, BASE_PATH)) {
             mainCluster[PATH.basename(path)] = newVal;
           } else {
             console.error('on children: unknown [%s]=%s', path, newVal.toString());
@@ -560,7 +560,7 @@ function Observer(basePathOrOption) {
     return;
   } else {
     this.on('children', function (path, newVal/*, diff*/) {
-      if (_.contains(path, self.basePath)) {
+      if (_.includes(path, self.basePath)) {
         self.cluster[PATH.basename(path)] = newVal;
       } else {
         console.error('on children: unknown [%s]=%s', path, newVal.toString());
