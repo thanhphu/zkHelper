@@ -584,6 +584,10 @@ Observer.prototype.getNodes  = function () {
   return getNodes(this.cluster);
 };
 
+function getClient() {
+  return client;
+}
+
 module.exports.init = init;
 module.exports.deinit = deinit;
 module.exports.isMaster = isMaster;
@@ -597,7 +601,7 @@ module.exports.createNode = createNode;
 module.exports.removeNode = removeNode;
 module.exports.CreateMode = zookeeper.CreateMode;
 module.exports.Exception = zookeeper.Exception;
-module.exports.client = client;
+module.exports.getClient = getClient;
 
 if (require.main === module) { // run directly from node
   var opt = {};
