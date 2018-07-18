@@ -597,7 +597,7 @@ module.exports.createNode = createNode;
 module.exports.removeNode = removeNode;
 module.exports.CreateMode = zookeeper.CreateMode;
 module.exports.Exception = zookeeper.Exception;
-module.exports.zookeeper = zookeeper;
+module.exports.client = client;
 
 if (require.main === module) { // run directly from node
   var opt = {};
