@@ -39,40 +39,8 @@ function isMaster() {
 }
 
 function appRestart(code, msg) {
-  if (zkStatus === 'deinitialized') {
-    console.warn('[appRestart] not appRestart due to zkStatus=deinitialized / code=%s err=%s', code, msg);
-    return;
-  }
-
+  // No longer care about zookeeper client's status
   console.warn('[appRestart] zkStatus=%s code=%s err=%s', zkStatus, code, msg);
-
-  if (client && code === 'disconnected') {
-    console.info('[appRestart] Disconnected - session id = ', client.getSessionId());
-
-    setTimeout(function () {
-      if (zkStatus === 'initialized' && client.getState() === zookeeper.State.SYNC_CONNECTED) {
-        console.info('[appRestart] disconnected from the zookeeper server but reconnected, state = ',
-            client.getState(), ', session id = ', client.getSessionId(), ', zkStatus =', zkStatus);
-
-        return;
-      } else {
-        console.warn('[appRestart] disconnected from the zookeeper server and not reconnected, state = ',
-            client.getState(), ', zkStatus =', zkStatus);
-
-        exitCode = code ? code : 0;
-        if (client) {
-          client.close();//redundant call on disconnect should be ok.
-        }
-        process.kill(process.pid, 'SIGTERM');
-      }
-    }, 20 * 1000); // after 8 ticks
-  } else {
-    exitCode = code ? code : 0;
-    if (client) {
-      client.close();//redundant call on disconnect should be ok.
-    }
-    process.kill(process.pid, 'SIGTERM');
-  }
 }
 
 function removeNode(path, cb) {
